@@ -6,8 +6,5 @@ class Solution {
         if (completed % 2 != 0) {
             ans = n - remaining;
         } else {
-            ans = remaining + 1;
-        }
-        return ans;
-    }
-}
+            ans = remaining + 1; }
+        return ans}}
