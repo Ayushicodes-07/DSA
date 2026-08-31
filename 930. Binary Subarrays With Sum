@@ -1,0 +1,26 @@
+class Solution {
+    public int numSubarraysWithSum(int[] nums, int goal) {
+        // CHANGE 1: Call the helper method twice and return the difference
+        return atMost(nums, goal) - atMost(nums, goal - 1);
+    }
+
+    // CHANGE 2: Move your original logic into this helper method
+    private int atMost(int[] nums, int goal) {
+        // CHANGE 3: Add a safety check for when goal - 1 becomes -1
+        if (goal < 0) return 0; 
+        
+        int l = 0;
+        int n = nums.length;
+        int count = 0;
+        int sum = 0;
+        for(int r = 0; r < n; r++){
+            sum += nums[r];
+            while(sum > goal){ 
+                sum -= nums[l];
+                l++;
+            }            
+            count += r - l + 1;
+        }
+        return count;
+    }
+}
